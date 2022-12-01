@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-     <link href="../static/main.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Geocoder Web App </title>
+    <link href="../static/main.css" rel="stylesheet">
 </head>
-    <body>
+
+<body>
     <div class="container">
         <h1>Welcome to the Geocoding Web App</h1>
         <h3> Please upload the file in CSV format with a mandatory addresss coloumn to get the geocoded output</h3>
-            <form action="{{url_for('success_table')}}" method="POST" enctype="multipart/form-data">
-                <input type="file" accept=".csv" name="file" />
-                <button type="submit"> Submit </button>
-            </form>
+        <form action="{{url_for('success_table')}}" method="POST" enctype="multipart/form-data">
+            <input type="file" accept=".csv" name="file" />
+            <button type="submit"> Submit </button>
+        </form>
         <div class="output">
             {{text|safe}}
             {% if btn %}
@@ -18,5 +23,6 @@
             {% endif %}
         </div>
     </div>
-    </body>
+</body>
+
 </html>
