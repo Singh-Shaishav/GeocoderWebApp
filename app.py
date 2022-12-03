@@ -16,8 +16,10 @@ def success_table():
         file=request.files['file']
         try:
             df=pandas.read_csv(file)
-            gc=Nominatim(scheme='http')
-            df["coordinates"]=df["Address"].apply(gc.geocode)
+            geolocator = Nominatim(user_agent="Geocoeder Web App")
+
+            
+            df["coordinates"]=df["Address"].apply(geolocator.geocode)
             df['Latitude'] = df['coordinates'].apply(lambda x: x.latitude if x != None else None)
             df['Longitude'] = df['coordinates'].apply(lambda x: x.longitude if x != None else None)
             df=df.drop("coordinates",1)
